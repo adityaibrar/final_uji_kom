@@ -33,7 +33,7 @@ class _DrawwerState extends State<Drawwer> {
             leading: Icon(Icons.person),
             title: Text("Profile"),
             onTap: () => {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Profile())),
             },
           ),

@@ -145,26 +145,6 @@ class _DashboardState extends State<Dashboard> {
             SizedBox(
               height: 10.0,
             ),
-            const Text(
-              'Tujuan Anda',
-              style: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            TextFormField(
-              autofocus: false,
-              obscureText: false,
-              decoration: InputDecoration(
-                  hintText: 'Lokasi tujuan anda',
-                  contentPadding: EdgeInsets.fromLTRB(22.0, 10.0, 20.0, 10.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(32.0),
-                  )),
-            ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(

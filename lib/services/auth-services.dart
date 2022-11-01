@@ -45,4 +45,6 @@ class Firebase_Auth {
   Future logout() async {
     await Auth.signOut();
   }
+
+  
 }

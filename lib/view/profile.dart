@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:final_uji_kom/shared/shared.dart';
 
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class _ProfileState extends State<Profile> {
         .get();
     setState(() {
       nama = result.docs[0]['Nama'];
-      phone = result.docs[0]['Phone'];
+      phone = result.docs[1]['Phone'];
     });
   }
 
@@ -38,23 +39,39 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(phone),
-            TextFormField(
-              controller: _namaController..text = user!.displayName!,
+      appBar: AppBar(
+        title: Text(
+          "Profile",
+          style: fieldTextStyle.copyWith(fontSize: 25),
+        ),
+        centerTitle: true,
+        backgroundColor: primaryColor,
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: defaultMargin),
+            child: Column(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(phone),
+                TextFormField(
+                  controller: _namaController..text = user!.displayName!,
+                ),
+                Text(user?.email ?? 'Unknown'),
+                Text(nama),
+                Container(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: primaryColor),
+                    onPressed: () {
+                      user?.updateDisplayName(_namaController.text);
+                    },
+                    child: Text('edit'),
+                  ),
+                ),
+              ],
             ),
-            Text(user?.email ?? 'Unknown'),
-            Text(nama),
-            ElevatedButton(
-              onPressed: () {
-                user?.updateDisplayName(_namaController.text);
-              },
-              child: Text('edit'),
-            ),
-          ],
+          ),
         ),
       ),
     );
