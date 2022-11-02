@@ -158,7 +158,7 @@ class _DashboardState extends State<Dashboard> {
                     final intent = AndroidIntent(
                         action: 'action_view',
                         data: Uri.encodeFull(
-                            'google.navigation:q=Kademangan+Kec. Kademangan,+Bondowoso+Indonesia&avoid=tf'),
+                            'google.navigation:q=alun+alun+Kironggo,+Bondowoso+Indonesia&avoid=tf'),
                         package: 'com.google.android.apps.maps');
                     intent.launch();
                   },

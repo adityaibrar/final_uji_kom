@@ -54,12 +54,10 @@ class _ProfileState extends State<Profile> {
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(phone),
                 TextFormField(
                   controller: _namaController..text = user!.displayName!,
                 ),
                 Text(user?.email ?? 'Unknown'),
-                Text(nama),
                 Container(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: primaryColor),

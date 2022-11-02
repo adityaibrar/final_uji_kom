@@ -14,9 +14,11 @@ class Firebase_Auth {
       await Auth.signInWithEmailAndPassword(email: email, password: password);
     } on FirebaseAuthException catch (e) {
       if (e.code == "user-not-found") {
-        print("tidak ada user yang ditemukan");
+        // print("tidak ada user yang ditemukan");
+        return true;
       } else if (e.code == "wrong-password") {
-        print("password yang anda masukkan salah");
+        // print("password yang anda masukkan salah");
+        return false;
       }
     }
   }
@@ -45,6 +47,4 @@ class Firebase_Auth {
   Future logout() async {
     await Auth.signOut();
   }
-
-  
 }

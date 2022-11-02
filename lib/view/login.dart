@@ -24,26 +24,33 @@ class _LoginpageState extends State<Loginpage> {
     var isAuth = await Auth.login(email: _email, password: _pass);
 
     if (_email.isEmpty || _pass.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        backgroundColor: Colors.red,
-        content: Text("Username Dan Password Tidak Boleh Kosong!"),
-      ));
-      return;
-    }
-
-    if (!isAuth) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
           backgroundColor: Colors.red,
-          content: Text("Maaf Anda Tidak Bisa Login, Coba Lagi Nanti!")));
+          content: Text("Username Dan Password Tidak Boleh Kosong!"),
+        ),
+      );
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      backgroundColor: Colors.green,
-      content: Text("Anda Berhasil Login"),
-    ));
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Dashboard()));
+    AlertDialog alert = AlertDialog(
+      title: Text("Berhasil Login"),
+      content: Container(
+        child: Text("Selamat datang"),
+      ),
+      actions: [
+        TextButton(
+          child: Text("OK"),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Dashboard()),
+          ),
+        ),
+      ],
+    );
+
+    showDialog(context: context, builder: (context) => alert);
+    return;
   }
 
   @override
